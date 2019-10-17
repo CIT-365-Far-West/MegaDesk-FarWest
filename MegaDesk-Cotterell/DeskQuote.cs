@@ -8,9 +8,9 @@ namespace MegaDesk_Cotterell
 {
     class DeskQuote
     {
-        private int surfaceArea, surfaceAreaPrice, drawerPrice, surfacePrice, rushPrice, priceQuote;
-        private string rushCode;
-
+        public int surfaceArea, surfaceAreaPrice, drawerPrice, surfacePrice, rushPrice, priceQuote;
+        public string rushCode;
+        public DateTime date = DateTime.Now;
 
         public DeskQuote(Desk desk)
         {
@@ -35,12 +35,10 @@ namespace MegaDesk_Cotterell
 
             priceQuote = surfaceAreaPrice + drawerPrice + surfacePrice + rushPrice;
 
-            DateTime date = DateTime.Now;
-
-            var displayQuote = new DisplayQuote();
+            /*var displayQuote = new DisplayQuote(desk, surfaceArea, surfaceAreaPrice,drawerPrice,surfacePrice, rushPrice, priceQuote, date);
             displayQuote.Tag = this;
             displayQuote.Show(this);
-            hide();
+            hide();*/
 
         }
 

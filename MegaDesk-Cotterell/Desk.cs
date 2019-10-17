@@ -8,7 +8,7 @@ namespace MegaDesk_Cotterell
 {
     public enum DesktopMaterial { PINE = 50, LAMINATE = 100, VENEER = 125, OAK = 200, ROSEWOOD = 300};
     
-    class Desk
+    public class Desk
     {
         const int WIDTH_MIN = 24;
         const int WIDTH_MAX = 96;
