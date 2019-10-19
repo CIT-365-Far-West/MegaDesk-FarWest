@@ -30,9 +30,10 @@ namespace MegaDesk_Cotterell
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            var mainMenu = (MainMenu)Tag;
-            mainMenu.Show();
-            Close();
+            AddQuote addQuote = new AddQuote();
+            addQuote.Tag = this;
+            addQuote.Show(this);
+            Hide();
         }
     }
 }
