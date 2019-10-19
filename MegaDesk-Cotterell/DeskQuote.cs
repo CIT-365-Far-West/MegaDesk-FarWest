@@ -8,6 +8,7 @@ namespace MegaDesk_Cotterell
 {
     public class DeskQuote
     {
+        public Desk desk;
         public int surfaceArea, surfaceAreaPrice, drawerPrice, surfacePrice, rushPrice, priceQuote;
         public string rushCode;
         public DateTime date = DateTime.Now;
@@ -18,6 +19,7 @@ namespace MegaDesk_Cotterell
 
         public DeskQuote(Desk desk)
         {
+            this.desk = desk;
             surfaceArea = desk.DeskWidth * desk.DeskDepth;
             if (surfaceArea > 1000)
                 surfaceAreaPrice = surfaceArea * desk.priPerSqIn;
@@ -38,11 +40,6 @@ namespace MegaDesk_Cotterell
             rushPrice = GetRushPrice(rushCode);
 
             priceQuote = surfaceAreaPrice + drawerPrice + surfacePrice + rushPrice;
-
-            /*var displayQuote = new DisplayQuote(desk, surfaceArea, surfaceAreaPrice,drawerPrice,surfacePrice, rushPrice, priceQuote, date);
-            displayQuote.Tag = this;
-            displayQuote.Show(this);
-            hide();*/
 
         }
 
