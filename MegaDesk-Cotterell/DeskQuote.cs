@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace MegaDesk_Cotterell
 {
-    class DeskQuote
+    public class DeskQuote
     {
         public int surfaceArea, surfaceAreaPrice, drawerPrice, surfacePrice, rushPrice, priceQuote;
         public string rushCode;
         public DateTime date = DateTime.Now;
+
+        public DeskQuote()
+        {
+        }
 
         public DeskQuote(Desk desk)
         {

@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MegaDesk_Cotterell
+﻿namespace MegaDesk_Cotterell
 {
-    public enum DesktopMaterial { PINE = 50, LAMINATE = 100, VENEER = 125, OAK = 200, ROSEWOOD = 300};
-    
+    public enum DesktopMaterial
+    {
+        Oak,
+        Laminate,
+        Pine,
+        Rosewood,
+        Veneer
+    }
+
     public class Desk
     {
         const int WIDTH_MIN = 24;

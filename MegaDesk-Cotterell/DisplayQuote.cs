@@ -12,7 +12,7 @@ namespace MegaDesk_Cotterell
 {
     public partial class DisplayQuote : Form
     {
-        public DisplayQuote(Desk desk, int surfaceArea, int basePrice, int drawerPrice, int surfacePrice, int rushPrice, int priceQuote,  DateTime date)
+        public DisplayQuote(Desk desk, int surfaceArea, int basePrice, int drawerPrice, int surfacePrice, int rushPrice, int priceQuote, DateTime date)
         {
             InitializeComponent();
             quoteTitle.Text = "Quote for " + desk.CustomerFirstName + " " + desk.CustomerLastName;
