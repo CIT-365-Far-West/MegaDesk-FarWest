@@ -76,14 +76,7 @@ namespace MegaDesk_Cotterell
             Desk newDesk = new Desk(firstName, lastName, width, depth, drawers, surface, days);
             DeskQuote newQuote = new DeskQuote(newDesk);
 
-            var displayQuote = new DisplayQuote( newDesk
-                                               , newQuote.surfaceArea
-                                               , newQuote.surfaceAreaPrice
-                                               , newQuote.drawerPrice
-                                               , newQuote.surfacePrice
-                                               , newQuote.rushPrice
-                                               , newQuote.priceQuote
-                                               , newQuote.date);
+            var displayQuote = new DisplayQuote(newQuote);
             displayQuote.Tag = this;
             displayQuote.Show(this);
             Hide();
