@@ -19,9 +19,10 @@ namespace MegaDesk_Cotterell
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            var mainMenu = (MainMenu)Tag;
-            mainMenu.Show();
-            Close();
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.Tag = this;
+            mainMenu.Show(this);
+            Hide();
         }
 
         private void deskWidthBox_Validating(object sender, CancelEventArgs e)
@@ -85,7 +86,7 @@ namespace MegaDesk_Cotterell
                                                , newQuote.date);
             displayQuote.Tag = this;
             displayQuote.Show(this);
-            //hide();
+            Hide();
 
         }
     }
