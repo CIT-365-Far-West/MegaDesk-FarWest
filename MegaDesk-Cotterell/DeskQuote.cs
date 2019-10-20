@@ -63,7 +63,7 @@ namespace MegaDesk_Cotterell
                 }
                 catch(Exception e)
                 {
-                    File.WriteAllText("logfile.log", "rushOrderPrices.txt could not be parsed.");
+                    File.WriteAllText("logfile.log", "rushOrderPrices.txt could not be parsed. Exception: " + e.ToString());
                 }
             }
             for (int i = 0; i < 9; i++)
