@@ -12,9 +12,17 @@ namespace MegaDesk_Cotterell
 {
     public partial class ViewAllQuotes : Form
     {
+        List<DeskQuote> quotes = new List<DeskQuote>();
+        AllQuotes allQuotes = new AllQuotes();
         public ViewAllQuotes()
         {
             InitializeComponent();
+            quotes = allQuotes.RetrieveAllQuotes();
+            foreach (DeskQuote quote in quotes)
+            {
+                string[] filtered = allQuotes.FilterQuote(quote);
+                dataGridView1.Rows.Add(filtered);
+            }
         }
 
         private void cancelButton_Click(object sender, EventArgs e)

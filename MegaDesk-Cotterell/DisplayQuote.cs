@@ -16,6 +16,8 @@ namespace MegaDesk_Cotterell
     {
         Desk desk;
         DeskQuote deskQuote;
+        AllQuotes allQuotes = new AllQuotes();
+        List<DeskQuote> quotes = new List<DeskQuote>();
 
         public DisplayQuote(DeskQuote deskQuote)
         {
@@ -33,6 +35,8 @@ namespace MegaDesk_Cotterell
             rushOrder.Text = desk.NumDays.ToString();
             rushPriceLabel.Text = deskQuote.rushPrice.ToString("C0");
             total.Text = deskQuote.priceQuote.ToString("C0");
+            quotes = allQuotes.RetrieveAllQuotes();
+            quotes.Add(deskQuote);
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -45,9 +49,7 @@ namespace MegaDesk_Cotterell
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            string json = JsonConvert.SerializeObject(deskQuote);
-            //StreamWriter file = new StreamWriter(.json);
-            File.WriteAllText("quotes.json", json);
+            allQuotes.SaveAllQuotes(quotes);
 
             MainMenu mainMenu = new MainMenu();
             mainMenu.Tag = this;

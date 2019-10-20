@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,28 +44,63 @@ namespace MegaDesk_Cotterell
 
         }
 
+        private int[,] GetRushOrder()
+        {
+            StreamReader reader = new StreamReader("rushOrderPrices.txt");
+            int[] rushPrices = new int[9];
+            int[,] rushArray = new int[3, 3];
+            int count = 0;
+
+            while (reader.EndOfStream == false)
+            {
+                string line = reader.ReadLine();
+                int price;
+                try
+                {
+                    price = int.Parse(line);
+                    rushPrices[count] = price;
+                    count++;
+                    string debug = "Value: " + line + " Line: " + count.ToString();
+                    File.AppendAllText("debug.out", debug);
+                }
+                catch(Exception e)
+                {
+                    File.WriteAllText("logfile.log", "rushOrderPrices.txt could not be parsed.");
+                }
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                int x, y;
+                x = i / 3;
+                y = i % 3;
+                rushArray[x, y] = rushPrices[i];
+            }
+            reader.Close();
+            return rushArray;
+        }
         private int GetRushPrice(string rushCode)
         {
+            int[,] c = GetRushOrder();
             switch (rushCode)
             {
                 case "3S":
-                    return 60;
+                    return c[0,0];
                 case "3M":
-                    return 70;
+                    return c[0,1];
                 case "3L":
-                    return 80;
+                    return c[0,2];
                 case "5S":
-                    return 40;
+                    return c[1,0];
                 case "5M":
-                    return 50;
+                    return c[1,1];
                 case "5L":
-                    return 60;
+                    return c[1,2];
                 case "7S":
-                    return 30;
+                    return c[2,0];
                 case "7M":
-                    return 35;
+                    return c[2,1];
                 case "7L":
-                    return 40;
+                    return c[2,2];
                 default:
                     return 0;
             }

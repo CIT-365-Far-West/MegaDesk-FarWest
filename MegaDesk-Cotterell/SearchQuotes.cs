@@ -14,19 +14,13 @@ namespace MegaDesk_Cotterell
 {
     public partial class SearchQuotes : Form
     {
+        List<DeskQuote> quotes = new List<DeskQuote>();
+        AllQuotes allQuotes = new AllQuotes();
+        List<DeskQuote> selectedQuotes = new List<DeskQuote>();
         public SearchQuotes()
         {
             InitializeComponent();
-            // List<DeskQuote> quotes = new List<DeskQuote>();
-            //string file = File.ReadAllText("quotes.json");
-            StreamReader reader = new StreamReader("quotes.json");
-            List<DeskQuote> quotes = new List<DeskQuote>();
-            while (reader.EndOfStream == false)
-            {
-                string line = reader.ReadLine();
-                DeskQuote quote = JsonConvert.DeserializeObject<DeskQuote>(line);
-                quotes.Add(quote);
-            }
+            quotes = allQuotes.RetrieveAllQuotes();
 
         }
 
@@ -35,6 +29,23 @@ namespace MegaDesk_Cotterell
             var mainMenu = (MainMenu)Tag;
             mainMenu.Show();
             Close();
+        }
+
+        private void surfaceMaterialCmbo_SelectedValueChanged(object sender, EventArgs e)
+        {
+            foreach (DeskQuote quote in quotes)
+            {
+                if (quote.desk.SurfaceMaterial == surfaceMaterialCmbo.Text)
+                {
+                    selectedQuotes.Add(quote);
+                }
+            }
+            foreach (DeskQuote quote in selectedQuotes)
+            {
+                string[] filtered = allQuotes.FilterQuote(quote);
+                dataGridView1.Rows.Add(filtered);
+            }
+                
         }
     }
 }
