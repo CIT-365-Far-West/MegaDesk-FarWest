@@ -95,7 +95,6 @@
             this.surfaceMaterialCmbo.DropDownWidth = 92;
             this.surfaceMaterialCmbo.FormattingEnabled = true;
             this.surfaceMaterialCmbo.Items.AddRange(new object[] {
-            "All",
             "Laminate",
             "Oak",
             "Pine",

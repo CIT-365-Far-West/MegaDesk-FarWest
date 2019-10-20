@@ -16,7 +16,6 @@ namespace MegaDesk_Cotterell
     {
         List<DeskQuote> quotes = new List<DeskQuote>();
         AllQuotes allQuotes = new AllQuotes();
-        List<DeskQuote> selectedQuotes = new List<DeskQuote>();
         public SearchQuotes()
         {
             InitializeComponent();
@@ -33,6 +32,8 @@ namespace MegaDesk_Cotterell
 
         private void surfaceMaterialCmbo_SelectedValueChanged(object sender, EventArgs e)
         {
+            dataGridView1.Rows.Clear();
+            List<DeskQuote> selectedQuotes = new List<DeskQuote>();
             foreach (DeskQuote quote in quotes)
             {
                 if (quote.desk.SurfaceMaterial == surfaceMaterialCmbo.Text)
