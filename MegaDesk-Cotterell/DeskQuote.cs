@@ -60,8 +60,6 @@ namespace MegaDesk_Cotterell
                     price = int.Parse(line);
                     rushPrices[count] = price;
                     count++;
-                    string debug = "Value: " + line + " Line: " + count.ToString();
-                    File.AppendAllText("debug.out", debug);
                 }
                 catch(Exception e)
                 {
